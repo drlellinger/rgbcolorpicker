@@ -19,11 +19,27 @@ public class RGBSource
 	private Label nR;
 	private Label nG;
 	private Label nB;
+	private Label history;
+	private Label h1;
+	private Label h2;
+	private Label h3;
+	private Label h4;
+	private Label h5;
+	private Label h6;
+	private Label h7;
+	private Button save;
 	private TextField tf;
 	private int rot;
 	private int gruen;
 	private int blau;
 	private Color rgb;
+	private Color rgb1;
+	private Color rgb2;
+	private Color rgb3;
+	private Color rgb4;
+	private Color rgb5;
+	private Color rgb6;
+	private Color rgb7;
 	private String rgbString;
 	//Ende
 	public RGBSource()
@@ -36,6 +52,13 @@ public class RGBSource
 	blau = 125;
 	rgbString = (rot+","+gruen+","+blau);
 	rgb = new Color(rot,gruen,blau);
+	rgb1 = new Color(rot,gruen,blau);
+	rgb2 = new Color(rot,gruen,blau);
+	rgb3 = new Color(rot,gruen,blau);
+	rgb4 = new Color(rot,gruen,blau);
+	rgb5 = new Color(rot,gruen,blau);
+	rgb6 = new Color(rot,gruen,blau);
+	rgb7 = new Color(rot,gruen,blau);
 	scR = new Scrollbar(Scrollbar.HORIZONTAL,125,1,0,256);
 	scG = new Scrollbar(Scrollbar.HORIZONTAL,125,1,0,256);
 	scB = new Scrollbar(Scrollbar.HORIZONTAL,125,1,0,256);
@@ -45,6 +68,15 @@ public class RGBSource
 	nR = new Label("125");
 	nG = new Label("125");
 	nB = new Label("125");
+	history = new Label("Historie");
+	h1 = new Label("");
+	h2 = new Label("");
+	h3 = new Label("");
+	h4 = new Label("");
+	h5 = new Label("");
+	h6 = new Label("");
+	h7 = new Label("");
+	save = new Button("Speichern");
 	tf = new TextField(rgbString+"");
 	// copy = new Button("Kopieren");
 	close = new Button("Schließen");
@@ -109,6 +141,36 @@ public class RGBSource
 // 	});
 // 	
 // 	
+	//-Save:
+	save.addActionListener(new ActionListener(){
+	public void actionPerformed(ActionEvent e)
+		{
+			rgb7 = rgb6;
+			rgb6 = rgb5;
+			rgb5 = rgb4;
+			rgb4 = rgb3;
+			rgb3 = rgb2;
+			rgb2 = rgb1;
+			rgb1 = rgb;
+			h1.setBackground(rgb1);
+			h2.setBackground(rgb2);
+			h3.setBackground(rgb3);
+			h4.setBackground(rgb4);
+			h5.setBackground(rgb5);
+			h6.setBackground(rgb6);
+			h7.setBackground(rgb7);
+		}
+	});
+	
+	//-Read:
+	// h1.addActionListener(new ActionListener(){
+// 	public void actionPerformed(ActionEvent e)
+// 		{
+// 			rgb = rgb1;
+// 			l.setBackground(rgb);
+// 		}
+// 	});
+			
 	//-Schließen:
 	close.addActionListener(new ActionListener(){
 	public void actionPerformed(ActionEvent e)
@@ -153,10 +215,44 @@ public class RGBSource
 	nB.setSize(25,15);
 	nB.setLocation(320,250);
 	
-	tf.setSize(100,25);
-	tf.setLocation(120,270);
+	history.setSize(50,15);
+	history.setLocation(10,275);
 	
-	// copy.setSize(100,25);
+	h1.setSize(15,15);
+	h1.setLocation(70,275);
+	h1.setBackground(rgb1);
+	
+	h2.setSize(15,15);
+	h2.setLocation(90,275);
+	h2.setBackground(rgb2);
+	
+	h3.setSize(15,15);
+	h3.setLocation(110,275);
+	h3.setBackground(rgb3);
+	
+	h4.setSize(15,15);
+	h4.setLocation(130,275);
+	h4.setBackground(rgb4);
+	
+	h5.setSize(15,15);
+	h5.setLocation(150,275);
+	h5.setBackground(rgb5);
+	
+	h6.setSize(15,15);
+	h6.setLocation(170,275);
+	h6.setBackground(rgb6);
+	
+	h7.setSize(15,15);
+	h7.setLocation(190,275);
+	h7.setBackground(rgb7);
+	
+	save.setSize(70,15);
+	save.setLocation(210,275);
+		
+	tf.setSize(95,25);
+	tf.setLocation(300,270);
+	
+//  copy.setSize(100,25);
 // 	copy.setLocation(225,270);
 	
 	close.setSize(100,25);
@@ -173,6 +269,15 @@ public class RGBSource
 	f.add(nR, BorderLayout.CENTER);
 	f.add(nG, BorderLayout.CENTER);
 	f.add(nB, BorderLayout.CENTER);
+	f.add(history, BorderLayout.CENTER);
+	f.add(h1, BorderLayout.CENTER);
+	f.add(h2, BorderLayout.CENTER);
+	f.add(h3, BorderLayout.CENTER);
+	f.add(h4, BorderLayout.CENTER);
+	f.add(h5, BorderLayout.CENTER);
+	f.add(h6, BorderLayout.CENTER);
+	f.add(h7, BorderLayout.CENTER);
+	f.add(save, BorderLayout.CENTER);
 	f.add(tf, BorderLayout.SOUTH);
 	// f.add(copy, BorderLayout.SOUTH);
 	f.add(close, BorderLayout.SOUTH);
