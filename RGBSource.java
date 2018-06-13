@@ -4,14 +4,16 @@ import java.awt.event.*;
 public class RGBSource
 {
 	Scanner ein = new Scanner (System.in);
+	
 	//Deklarieren der Fenster:
 	private Frame f;
+	
 	//Deklarieren der Elemente:
 	private Scrollbar scR;
 	private Scrollbar scG;
 	private Scrollbar scB;
-	// private Button copy;
-	private Button close;
+// 	private Button copy;
+// 	private Button close;
 	private Label l;
 	private Label lRot;
 	private Label lGruen;
@@ -27,7 +29,9 @@ public class RGBSource
 	private Label h5;
 	private Label h6;
 	private Label h7;
+	private Label be;
 	private Button save;
+//	private Button set;
 	private TextField tf;
 	private int rot;
 	private int gruen;
@@ -41,6 +45,10 @@ public class RGBSource
 	private Color rgb6;
 	private Color rgb7;
 	private String rgbString;
+//	public Clipboard clipboard;
+//	private MenuBar menu = new MenuBar();
+
+
 	//Ende
 	public RGBSource()
 	{
@@ -50,6 +58,7 @@ public class RGBSource
 	rot = 125;
 	gruen = 125;
 	blau = 125;
+//	clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 	rgbString = (rot+","+gruen+","+blau);
 	rgb = new Color(rot,gruen,blau);
 	rgb1 = new Color(rot,gruen,blau);
@@ -76,11 +85,18 @@ public class RGBSource
 	h5 = new Label("");
 	h6 = new Label("");
 	h7 = new Label("");
+	be = new Label("");
 	save = new Button("Speichern");
+//	set = new Button("Setzen");
 	tf = new TextField(rgbString+"");
-	// copy = new Button("Kopieren");
-	close = new Button("Schließen");
+// 	copy = new Button("Kopieren");
+// 	close = new Button("Schließen");
+// 	Menu RGB = new Menu("RGB");
+// 	MenuItem saveinmenu = new MenuItem("Speichern");
+// 	MenuItem closeinmenu = new MenuItem("Schließen");
 	}
+	
+	
 	//Frame-Eigenschaften:
 	public void frameFestlegen()
 	{
@@ -97,7 +113,6 @@ public class RGBSource
 	f.setVisible(true);
 	
 	//Events:
-	
 	//-Scrollbars:
 	scR.addAdjustmentListener(new AdjustmentListener(){
 	public void adjustmentValueChanged(AdjustmentEvent e)
@@ -110,7 +125,6 @@ public class RGBSource
 			tf.setText(rgbString+"");
 		}
 	});
-	
 	scG.addAdjustmentListener(new AdjustmentListener(){
 	public void adjustmentValueChanged(AdjustmentEvent e)
 		{
@@ -122,7 +136,6 @@ public class RGBSource
 			tf.setText(rgbString+"");
 		}
 	});
-	
 	scB.addAdjustmentListener(new AdjustmentListener(){
 	public void adjustmentValueChanged(AdjustmentEvent e)
 		{
@@ -134,13 +147,22 @@ public class RGBSource
 			tf.setText(rgbString+"");
 		}
 	});
-	// -Copy:
+	//-Copy:
 // 	copy.addActionListener(new ActionListener(){
 // 	public void actionPerformed(ActionEvent e)
-// 		{}
+// 		{
+// 		
+// 		}
 // 	});
-// 	
-// 	
+	//-Textfeld-Set
+// 	set.addActionListener(new ActionListener(){
+// 	public void actionPerformed(ActionEvent e)
+// 	{
+// 		
+// 		rgb = new Color(convrot,convgruen,convblau);
+// 		l.setBackground(rgb);
+// 	}
+// 	});
 	//-Save:
 	save.addActionListener(new ActionListener(){
 	public void actionPerformed(ActionEvent e)
@@ -161,10 +183,9 @@ public class RGBSource
 			h7.setBackground(rgb7);
 		}
 	});
-	
 	//-Read:
-	// h1.addActionListener(new ActionListener(){
-// 	public void actionPerformed(ActionEvent e)
+//		h1.addActionListener(new ActionListener(){
+//		public void actionPerformed(ActionEvent e)
 // 		{
 // 			rgb = rgb1;
 // 			l.setBackground(rgb);
@@ -172,13 +193,12 @@ public class RGBSource
 // 	});
 			
 	//-Schließen:
-	close.addActionListener(new ActionListener(){
-	public void actionPerformed(ActionEvent e)
-		{System.exit(0);}
-	});
+//	close.addActionListener(new ActionListener(){
+// 	public void actionPerformed(ActionEvent e)
+// 		{System.exit(0);}
+// 	});
 	
 	//Layoutwahl:
-	
 	f.setLayout(null);
 	//f.setLayout(new BorderLayout());
 	//f.setLayout(new FlowLayout());
@@ -246,17 +266,20 @@ public class RGBSource
 	h7.setLocation(190,275);
 	h7.setBackground(rgb7);
 	
+	be.setSize(50,15);
+	be.setLocation(10,295);
+	
 	save.setSize(70,15);
 	save.setLocation(210,275);
 		
 	tf.setSize(95,25);
-	tf.setLocation(300,270);
+	tf.setLocation(70,295);
 	
-//  copy.setSize(100,25);
-// 	copy.setLocation(225,270);
+// 	copy.setSize(95,25);
+//  copy.setLocation(170,295);
 	
-	close.setSize(100,25);
-	close.setLocation(120,300);
+// 	close.setSize(100,25);
+// 	close.setLocation(270,295);
 		
 	//Elemente hinzufügen:
 	f.add(l, BorderLayout.NORTH);
@@ -277,10 +300,17 @@ public class RGBSource
 	f.add(h5, BorderLayout.CENTER);
 	f.add(h6, BorderLayout.CENTER);
 	f.add(h7, BorderLayout.CENTER);
-	f.add(save, BorderLayout.CENTER);
+	f.add(be, BorderLayout.CENTER);
 	f.add(tf, BorderLayout.SOUTH);
-	// f.add(copy, BorderLayout.SOUTH);
-	f.add(close, BorderLayout.SOUTH);
+	f.add(save, BorderLayout.CENTER);
+// 	f.add(copy, BorderLayout.SOUTH);
+//	f.add(close, BorderLayout.SOUTH);
+
+	
+//	RGB.add(saveinmenu);
+// 	RGB.add(closeinmenu);
+
+
 	//Ende
 	}
 }
